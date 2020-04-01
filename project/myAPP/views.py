@@ -171,6 +171,11 @@ def submit(request):
     # print(request.POST.get('signature', None))
     global normal_flag
     global openid
+    # emptyCheck=['uname','ic_number','tel_number','room','seat','temperature']
+    # for etpye in emptyCheck:
+    #     if(len(request.POST[etpye])==0):
+    #         return HttpResponse("请填好完整信息！")
+
     if (float(request.POST['temperature']) > 37.0):
         normal_flag = 0
 
@@ -190,7 +195,8 @@ def submit(request):
         new_user.temperature = float(request.POST['temperature'])
         new_user.date = datetime.datetime.now()
         new_user.isnormal = normal_flag
-        new_user.openid = openid
+        # new_user.openid = openid
+        new_user.openid ='12345wertyxcv456'
         new_user.save()
 
     return render(request, 'success.html')
